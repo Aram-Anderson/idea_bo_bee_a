@@ -1,17 +1,5 @@
 class UsersController < ApplicationController
 
-  def index
-    if @user = User.find_by(id: session[:user_id]) && @user.admin
-      @users = User.all
-    elsif @users = User.find_by(id: session[:user_id])
-      flash[:message] = "Page only viewable to admin users"
-      redirect_to user_path(@user)
-    else
-      flash[:message] = "Please log in"
-      redirect_to login_path
-    end
-  end
-
   def show
     @user = User.find(params[:id])
   end
@@ -36,6 +24,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     flash[:message] = "#{user.username} deleted"
+    redirect_to request.referrer
   end
 
   private

@@ -1,7 +1,9 @@
 <h1>All Users Index.</h1>
 <% @users.each do |user| %>
 <ul>
-<li><%= user.name %></li>
+<li><%= user.username %></li>
 <li><%= user.email %></li>
 </ul>
+<%= link_to "delete user", user_path(user), method: 'delete' %>
+<%= link_to "edit user", edit_user_path(user) %>
 <% end %>
