@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col s12 m4">
+    <div class="card">
+      <div class="card-image">
+      <%= image_tag @image.url%>
+      <span class="card-title">This Image</span>
+    </div>
+      <div class="card-action">
+      <%= link_to "edit image", edit_admin_image_path(@image) %>
+      <%= link_to "delete image", admin_image_path(@image), method: 'delete' %>
+    </div>
+  </div>
+</div>
+</div>
+</div>

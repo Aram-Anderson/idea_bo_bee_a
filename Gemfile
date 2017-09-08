@@ -45,6 +45,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
   gem 'literate_randomizer'
+  gem 'image_suckr'
 end
 
 group :development do

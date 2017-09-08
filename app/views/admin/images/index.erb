@@ -1,0 +1,19 @@
+<h1>All Images</h1>
+<div class="row">
+<% @images.each do |image| %>
+  <div class="col s12 m2">
+    <div class="card small">
+      <div class="card-image">
+        <%= image_tag image.url %>
+      </div>
+      <div class="card-content">
+        <p>This Image</p>
+      </div>
+      <div class="card-action">
+        <%= link_to "edit image", edit_admin_image_path(image) %>
+        <%= link_to "delete image", admin_image_path(image), method: 'delete' %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
