@@ -1,7 +1,10 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to login_path
+    end
   end
 
   def new
@@ -17,6 +20,21 @@ class UsersController < ApplicationController
     else
       flash[:message] = "Unable to create user"
       render :new
+    end
+  end
+
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def upddate
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:message] = "#{@user.username} successfully updated"
+      redirect_to user_path(@user)
+    else
+      flash[:message] = "#{@user.username} not updated. Something went wrong."
+      redirect_to user_path(@user)
     end
   end
 

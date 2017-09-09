@@ -1,0 +1,12 @@
+<h1>Welcome, <%= User.find(session[:user_id]).username %>. Here are all the ideas.</h1>
+<% @users.each do |user| %>
+<ul>
+  <li>All <%= user.username %>'s ideas</li>
+  <% user.ideas.each do |idea| %>
+  <ul>
+    <li>idea<%= idea.title %></li>
+    <%= link_to "see this idea", user_idea_path(user, idea) %>
+  </ul>
+  <% end %>
+</ul>
+<% end %>

@@ -7,7 +7,7 @@
         <%= image_tag image.url %>
       </div>
       <div class="card-content">
-        <p>This Image</p>
+        <p><%= image.name %></p>
       </div>
       <div class="card-action">
         <%= link_to "edit image", edit_admin_image_path(image) %>

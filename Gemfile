@@ -46,6 +46,7 @@ group :development, :test do
   gem 'faker'
   gem 'literate_randomizer'
   gem 'image_suckr'
+  gem 'shoulda-matchers'
 end
 
 group :development do

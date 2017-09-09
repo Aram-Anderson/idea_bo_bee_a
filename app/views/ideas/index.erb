@@ -1,0 +1,12 @@
+<h1><%= @user.username %>'s ideas</h1>
+<% if @ideas.nil? %>
+  <p>You have no ideas!</p>
+<% else %>
+<ol>
+<% @ideas.each do |idea| %>
+  <li><%= idea.title %></li>
+  <li><%= idea.body %></li>
+
+<% end %>
+</ol>
+<% end %>

@@ -3,7 +3,7 @@
     <div class="card">
       <div class="card-image">
       <%= image_tag @image.url%>
-      <span class="card-title">This Image</span>
+      <span class="card-title"><%= @image.name %></span>
     </div>
       <div class="card-action">
       <%= link_to "edit image", edit_admin_image_path(@image) %>

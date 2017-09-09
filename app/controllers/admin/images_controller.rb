@@ -31,7 +31,7 @@ class Admin::ImagesController < Admin::BaseController
     @image = Image.find(params[:id])
     if @image.update(image_params)
       flash[:message] = "Image updated successfully"
-      redirect_to image_path(@image)
+      redirect_to admin_image_path(@image)
     else
       flash[:message] = "Image not updated. Something went wrong"
       redirect_to request.referrer
@@ -51,6 +51,6 @@ class Admin::ImagesController < Admin::BaseController
   private
 
   def image_params
-    params.require(:image).permit(:url)
+    params.require(:image).permit(:url, :name)
   end
 end

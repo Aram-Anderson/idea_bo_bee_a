@@ -1,0 +1,8 @@
+<h1>All Users</h1>
+<div class="row">
+<% @users.each do |user| %>
+<ul class="col m2">
+  <li><%= user.username %></li>
+  <li><%= link_to "#{user.username}'s ideas", user_ideas_path(user) %></li>
+</ul>
+<% end %>
