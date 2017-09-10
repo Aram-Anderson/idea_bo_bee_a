@@ -1,12 +1,16 @@
 <h1><%= @user.username %>'s ideas</h1>
-<% if @ideas.nil? %>
+<% if @user.ideas.empty? %>
   <p>You have no ideas!</p>
 <% else %>
-<ol>
-<% @ideas.each do |idea| %>
-  <li><%= idea.title %></li>
-  <li><%= idea.body %></li>
-
-<% end %>
-</ol>
+<ul>
+  <% @user.ideas.each do |idea| %>
+  <% unless idea.images.empty? %>
+  <li><%= image_tag idea.images.first %></li>
+  <% end %>
+    <li><%= idea.title %></li>
+    <li><%= idea.body %></li>
+    <%= link_to "edit idea", edit_user_idea_path(@user, idea) %>
+    <%= link_to "delete idea", user_idea_path(@user, idea), method: 'delete' %>
+  <% end %>
+</ul>
 <% end %>

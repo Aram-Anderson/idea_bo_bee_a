@@ -1,8 +1,36 @@
-<h1>Your Page</h1>
+<h1><%= @user.username %>'s Page</h1>
 <ul>
-<li><%= @user.username %></li>
-<li><%= @user.email %></li><br>
-<% if @user.id == session[:user_id] || @user.admin %>
-<%= link_to "Edit User", edit_user_path(@user) %>
-<%= link_to "Delete User", user_path(@user), method: 'delete' %>
-<% end %>
+  <li>Username: <%= @user.username %></li>
+  <li>Email: <%= mail_to @user.email %></li><br>
+  <% if @user.id == session[:user_id] || @user.admin %>
+  <%= link_to "Edit User", edit_user_path(@user) %>
+  <%= link_to "Delete User", user_path(@user), method: 'delete' %>
+  <% end %><br><br>
+  <p><%= @user.username %>'s ideas:</p>
+  <% if @user.ideas.empty? %>
+  <p><%= @user.username %> has no ideas!</p>
+  <% else %>
+  <div class="row">
+  <% @user.ideas.each do |idea| %>
+  <div class="col s4">
+  <div class="card small">
+    <div class="card-image waves-effect waves-block waves-light">
+      <% if idea.images.empty? %>
+      <p class="activator">there are no images for this idea</p>
+      <% else %>
+      <a class="activator"><%= image_tag idea.images.first.url %></a>
+      <% end %>
+    </div>
+    <div class="card-content">
+      <p>Idea title:</p>
+      <span class="card-title activator grey-text text-darken-4"><%= link_to idea.title, user_idea_path(@user, idea) %><i class="material-icons right">more_vert</i></span>
+    </div>
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4"><%= idea.title %><i class="material-icons right">close</i></span>
+      <p><%= idea.body %></p>
+    </div>
+</div>
+  </div>
+    <% end %>
+
+  <% end %>

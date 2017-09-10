@@ -5,11 +5,28 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+IMAGES = []
+
+suckr = ImageSuckr::GoogleSuckr.new
+
+200.times do
+  IMAGES << Image.create(name: Faker::Name.first_name, url: Faker::Fillmurray.image)
+end
+
 10.times do
 user = User.create!(email: Faker::Internet.email, username: Faker::Internet.user_name, password: Faker::Internet.password)
   5.times do
-    user.ideas.create(title: Faker::Hacker.verb, body: LiterateRandomizer.paragraph)
+    idea = user.ideas.create(title: Faker::Hacker.verb, body: LiterateRandomizer.paragraph)
+    3.times do
+      idea.images << IMAGES.sample
+    end
   end
 end
 
-User.create!(email: Faker::Internet.email, username: "Franklin", password: "1234", role: "admin")
+admin = User.create!(email: Faker::Internet.email, username: "Franklin", password: "1234", role: "admin")
+10.times do
+  idea = admin.ideas.create(title: Faker::Hacker.verb, body: LiterateRandomizer.paragraph)
+  4.times do
+    idea.images << IMAGES.sample
+  end
+end

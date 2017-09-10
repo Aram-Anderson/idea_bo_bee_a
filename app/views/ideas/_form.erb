@@ -1,0 +1,21 @@
+<%= form_for([:user, @idea]) do |f| %>
+
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :body %>
+<%= f.text_area :body %>
+<p>Check the box to add images:</p>
+<div class="row">
+  <%= hidden_field_tag 'idea[image_ids][]', nil %>
+  <% @images.each do |image| %>
+  <div class="col s2">
+    <%= check_box_tag('idea[image_ids][]', image.id, @idea.image_ids.include?(image.id), id: "image-#{image.id}") %>
+    <label for=<%= "image-#{image.id}" %>><%= image_tag image.url, width: 100 %></label>
+  </div>
+  <% end %>
+</div>
+
+<%= f.submit %>
+
+<% end %>
