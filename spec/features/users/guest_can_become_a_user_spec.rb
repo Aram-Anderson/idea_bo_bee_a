@@ -13,7 +13,7 @@ feature "A guest visits the site" do
       click_on "Create Account"
 
       expect(page).to have_content(username)
-      expect(page).to have_content("Your Page")
+      expect(page).to have_content("#{username}'s Page")
       expect(current_path).to eq("/users/#{User.last.id}")
     end
   end

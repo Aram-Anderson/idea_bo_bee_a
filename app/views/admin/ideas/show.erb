@@ -4,7 +4,4 @@
 <p>Idea title: <%= @idea.title %><br></p>
 <p>Idea body:<br> <%= @idea.body %></p>
 <p>Categories: </p><br>
-<% @idea.categories.each do |category| %>
-<ul>
-  <li><%= category.name %></li>
-</ul>
+<%= @idea.category.name %>
