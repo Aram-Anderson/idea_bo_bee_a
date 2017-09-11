@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
+gem 'faker'
+gem 'literate_randomizer'
 gem 'materialize-sass'
 
 # Use Capistrano for deployment
@@ -43,8 +45,6 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'database_cleaner'
-  gem 'faker'
-  gem 'literate_randomizer'
   gem 'image_suckr'
   gem 'shoulda-matchers'
   gem 'sqlite3'
