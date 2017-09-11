@@ -5,6 +5,8 @@
 
 <%= f.label :body %>
 <%= f.text_area :body %>
+
+<%= f.collection_select :category_id, @categories, :id, :name, prompt: true%>
 <p>Check the box to add images:</p>
 <div class="row">
   <%= hidden_field_tag 'idea[image_ids][]', nil %>

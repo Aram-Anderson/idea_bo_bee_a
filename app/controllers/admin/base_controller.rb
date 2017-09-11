@@ -8,6 +8,6 @@ class Admin::BaseController < ApplicationController
   def dashboard
     @users = User.all
     @ideas = Idea.all
-    # @categories = Category.all
+    @categories = Category.all
   end
 end

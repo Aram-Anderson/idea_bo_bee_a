@@ -5,6 +5,7 @@ class Admin::IdeasController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = current_user
+    @idea = Idea.find(params[:id])
   end
 end

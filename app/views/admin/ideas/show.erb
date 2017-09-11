@@ -1,0 +1,5 @@
+<h1><%= @user.username %>'s idea viewer</h1>
+
+<h4>User with the ideas: <%= link_to @idea.user.username, admin_user_path(@idea.user) %><br></h4>
+<p>Idea title: <%= @idea.title %><br></p>
+<p>Idea body:<br> <%= @idea.body %></p>

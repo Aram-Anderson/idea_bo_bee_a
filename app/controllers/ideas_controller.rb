@@ -1,11 +1,17 @@
-class IdeasController < ApplicationController
+class IdeasController < BaseController
+  before_action :current_user?
+  before_action @user = :current_user
 
   def index
-    @user = User.find(params[:user_id])
+    @user
   end
 
   def show
-    @idea = Idea.find(params[:id])
+    @idea = @user.ideas.find_by(id: params[:id])
+    if @idea.nil?
+      flash[:message] = "You don't have that idea in your ideas"
+      redirect_to user_path(current_user)
+    end
   end
 
   def edit
@@ -14,21 +20,19 @@ class IdeasController < ApplicationController
   end
 
   def new
-    @images = Image.all
-    @user = User.find(params[:user_id])
     @idea = Idea.new
+    @images = Image.all
+    @categories = Category.all
   end
 
   def create
-    binding.pry
-    @idea = Idea.new(params[:idea])
+    @idea = @user.ideas.new(idea_params)
     if @idea.save
       flash[:message] = "#{@idea.title} was created successfully!"
       redirect_to user_idea_path(@idea.user, @idea)
     else
-      @images = Image.all
       flash[:message] = "Unable to create idea. Something went wrong"
-      render :new
+      redirect_to new_user_idea_path(current_user)
     end
   end
 
@@ -57,6 +61,6 @@ class IdeasController < ApplicationController
   private
 
   def idea_params
-    params.require(:idea).permit(:title, :body, :user_id, image_ids: [])
+    params.require(:idea).permit(:title, :body, :category_id, image_ids: [])
   end
 end

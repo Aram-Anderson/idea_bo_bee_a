@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'users#show'
+  root 'base#index'
 
   resources :users, except: [:index] do
     resources :ideas
   end
 
   namespace :admin do
-    resources :users, only: [:index]
+    resources :users, only: [:index, :show]
     resources :images
-    resources :ideas, only: [:index]
+    resources :ideas, only: [:index, :show]
+    resources :categories
   end
 
 
@@ -17,4 +18,5 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   get "/logout", to: "sessions#destroy"
   get "/dashboard", to: "admin/base#dashboard"
+  get "/", to: "base#index"
 end

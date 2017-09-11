@@ -5,4 +5,5 @@ class Idea < ApplicationRecord
   has_many :idea_images
   has_many :images, through: :idea_images
   belongs_to :user
+  belongs_to :category
 end

@@ -12,6 +12,9 @@ class SessionsController < ApplicationController
       session[:user_id] = @user.id
       flash[:message] = "#{@user.username} was successfully logged in"
       redirect_to user_path(@user)
+    else
+      flash[:message] = "Unable to log in"
+      render :new
     end
   end
 

@@ -16,3 +16,7 @@
 //= require jquery
 //= require turbolinks
 //= require materialize-sprockets
+
+$(document).ready(function() {
+    $('select').material_select();
+});

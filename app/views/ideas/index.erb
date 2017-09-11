@@ -5,7 +5,7 @@
 <ul>
   <% @user.ideas.each do |idea| %>
   <% unless idea.images.empty? %>
-  <li><%= image_tag idea.images.first %></li>
+  <li><%= image_tag idea.images.first.url %></li>
   <% end %>
     <li><%= idea.title %></li>
     <li><%= idea.body %></li>
@@ -14,3 +14,4 @@
   <% end %>
 </ul>
 <% end %>
+<%= link_to "Create A New Idea", new_user_idea_path(@user) %>

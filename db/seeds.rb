@@ -6,10 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 IMAGES = []
+CATEGORIES = []
 
-suckr = ImageSuckr::GoogleSuckr.new
+30.times do
+  CATEGORIES << Category.create(name: Faker::Hacker.ingverb)
+end
 
-200.times do
+20.times do
   IMAGES << Image.create(name: Faker::Name.first_name, url: Faker::Fillmurray.image)
 end
 
@@ -25,7 +28,7 @@ end
 
 admin = User.create!(email: Faker::Internet.email, username: "Franklin", password: "1234", role: "admin")
 10.times do
-  idea = admin.ideas.create(title: Faker::Hacker.verb, body: LiterateRandomizer.paragraph)
+  idea = admin.ideas.create(title: Faker::Hacker.verb, body: LiterateRandomizer.paragraph, category_id: CATEGORIES.sample)
   4.times do
     idea.images << IMAGES.sample
   end

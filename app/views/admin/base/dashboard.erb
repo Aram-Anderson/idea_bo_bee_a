@@ -1,1 +1,21 @@
 <h1>Admin Dashboard</h1>
+<div class="row">
+  <div class="col m4">
+    <h4>All Users</h4>
+    <% @users.each do |user| %>
+    <%= link_to user.username, admin_user_path(user) %><br>
+    <% end %>
+  </div>
+  <div class="col m4">
+    <h4>All Ideas</h4>
+    <% @ideas.each do |idea| %>
+      <%= link_to idea.title, admin_idea_path(idea) %><br>
+      <% end %>
+  </div>
+  <div class="col m4">
+    <h4>All Categories</h4>
+    <% @categories.each do |category| %>
+    <%= link_to category.name, admin_category_path(category) %><br>
+    <% end %>
+  </div>
+</div>

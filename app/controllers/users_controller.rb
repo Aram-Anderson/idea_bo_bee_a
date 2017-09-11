@@ -1,4 +1,5 @@
-class UsersController < ApplicationController
+class UsersController < BaseController
+  before_action :current_user?, except: :new
 
   def show
     @user = User.find_by(id: params[:id])

@@ -18,12 +18,10 @@
       <% if @user.nil? %>
       <li><%= link_to "log in", login_path %></li>
       <% elsif session[:user_id] != nil %>
-      <li class="black-link"><%= link_to "your page", user_path(session[:user_id]) %></li>
+      <li><%= link_to "your page", user_path(session[:user_id]) %></li>
       <li><%= link_to "your ideas", user_ideas_path(session[:user_id]) %></li>
       <% if @user.admin? %>
       <li><%= link_to "admin dashboard", dashboard_path %></li>
-      <li><%= link_to "all users", admin_users_path %></li>
-      <li><%= link_to "all ideas", admin_ideas_path %></li>
       <% end %>
       <li><%= link_to "logout", logout_path %></li>
       <% end %>
@@ -38,14 +36,14 @@
     </nav>
     <%= yield %>
   </main>
-<nav>
-  <div class="nav-wrapper grey darken-2">
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      <% if session[:user_id] %>
-      <li><%= link_to "logout", logout_path %></li>
-              <% end %>
-    </ul>
-  </div>
-</nav>
+  <nav>
+    <div class="nav-wrapper grey darken-2">
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        <% if session[:user_id] %>
+        <li><%= link_to "logout", logout_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
 </body>
 </html>

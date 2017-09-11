@@ -1,0 +1,10 @@
+<h1>All Categories</h1>
+<div class="row">
+<% @categories.each do |category| %>
+<ul class="col m3">
+  <li><%= category.name %></li>
+  <li><%= link_to "edit this category", edit_admin_category_path(category) %></li>
+  <li><%= link_to "delete this category", admin_category_path(category), method: 'delete' %></li>
+</ul><br>
+<% end %>
+</div>
