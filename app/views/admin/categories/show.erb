@@ -1,0 +1,8 @@
+<h1>This Category</h1>
+<h4>Name: <%= @category.name %></h4>
+<h5>Ideas associated with this category:</h5>
+<% @category.ideas.each do |idea| %>
+<ul>
+<li><%= link_to idea.title, admin_idea_path(idea) %></li>
+</ul>
+<% end %>
