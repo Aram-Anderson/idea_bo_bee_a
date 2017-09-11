@@ -3,3 +3,8 @@
 <h4>User with the ideas: <%= link_to @idea.user.username, admin_user_path(@idea.user) %><br></h4>
 <p>Idea title: <%= @idea.title %><br></p>
 <p>Idea body:<br> <%= @idea.body %></p>
+<p>Categories: </p><br>
+<% @idea.categories.each do |category| %>
+<ul>
+  <li><%= category.name %></li>
+</ul>
